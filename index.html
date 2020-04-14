@@ -24,6 +24,12 @@
       #footer p {
         margin-bottom: 0;
       }
+      .readonly {
+        background-color: #e9ecef;
+      }
+      h2 {
+        padding-top: 0.5315rem; /* 2.6575rem 2.126rem; */
+      }
     </style>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -45,17 +51,67 @@
       </div>
       <div class="main">
         <div class="row">
-          <div class="col-sm-12">
-            <h1>Пошук</h1>
-            <p class="lead">Регулярні вирази людською мовою</p>
+          <div class="col-sm-12 col-md-6">
+            <h1>Пошук і заміна</h1>
+            <div class="form-group">
+              <label for="search">Що шукати:</label>
+              <textarea class="form-control" id="search" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="replace">Замінити на:</label>
+              <textarea class="form-control" id="replace" rows="1"></textarea>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <h2>Перевірка</h2>
+            <div class="form-group">
+              <label for="replace">Зразок тексту:</label>
+              <textarea class="form-control" id="replace" rows="3">Побачити у очах</textarea>
+            </div>
+            <div class="form-group">
+              <label for="replace">Результат пошуку:</label>
+              <div class="form-control readonly" id="search-result" style="min-height: 6.6rem;">
+                text
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="replace-result">Результат заміни:</label>
+              <textarea class="form-control" id="replace-result" rows="3" readonly>
+              </textarea>
+            </div>
           </div>
         </div>
       </div>
       <div class="help">
         <div class="row">
-          <div class="col-sm-12">
+          <div class="col-sm-12 col-md-6">
             <h1>Допомога</h1>
-            <p class="lead">Регулярні вирази людською мовою</p>
+            <p>Регулярний вираз — це рядок зі спеціяльними символами, який дозволяє в текстових редакторах шукати не конкретний текст, а текст за певними ознаками. Наприклад, слова, що закінчуються на голосну.</p>
+            <p>
+              <i>В Word`і регулярні вирази називаються символи узагальнення
+                (англ. wildcards, рус. подстановочные знаки)</i>
+            </p>
+            <h3>Помічник коректора</h3>
+            <p>Помічник коректора має на меті спростити </p>
+            <samp>This text is meant to be treated as sample output from a computer program.</samp>
+            <h3>Шаблони</h3>
+            <table class="table" id="templates">
+              <thead>
+                <tr>
+                  <th scope="col">Шаблон</th>
+                  <th scope="col">Опис</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>_літера_</td>
+                  <td>Будь-яка літера, напр. <b>А</b> чи <b>р</b>.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <h2>Швидкі рецепти</h2>
           </div>
         </div>
       </div>
