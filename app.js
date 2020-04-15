@@ -33,10 +33,22 @@ var patterns = [
 
 var config = {
   trigger: '_',
-  values: patterns,
+  values: function (text, cb) {
+    var prefix = text.startsWith('_') ? '_' : '';
+    var values = patterns.map(function (pattern) {
+      return {
+        name: pattern.name,
+        key: pattern.name,
+        value: prefix + pattern.name
+      }
+    });
+    cb(values);
+  },
+  requireLeadingSpace: false,
   replaceTextSuffix: '_',
-  lookup: 'name',
-  fillAttr: 'name',
+  noMatchTemplate: function () {
+    return '<span style:"visibility: hidden;"></span>';
+  },
 };
 
 function wrapMatches(string, pattern) {
@@ -56,8 +68,13 @@ function fillTemplates() {
 };
 
 $(function() {
+
+  var config2 = Object.assign({}, config);
+  config2.trigger = '__';
   var tribute = new Tribute(config);
   tribute.attach(document.getElementById("search"));
+
+  new ClipboardJS('.copy-btn');
 
   fillTemplates();
 });
