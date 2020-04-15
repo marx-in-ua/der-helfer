@@ -71,7 +71,7 @@
             </div>
             <div class="form-group">
               <label for="replace">Замінити на:</label>
-              <textarea class="form-control" id="replace" rows="1"></textarea>
+              <textarea class="form-control" id="replace" rows="1">(1) в (2)</textarea>
             </div>
             <div class="form-group">
               <label for="replace">Зразок тексту:</label>
@@ -84,7 +84,6 @@
             <div class="form-group">
               <label for="search-preview">Результат пошуку:</label>
               <div class="form-control readonly" id="search-preview" style="min-height: 6.6rem;">
-                text
               </div>
             </div>
             <div class="form-group">
@@ -101,10 +100,12 @@
                       <label for="search-result" class="col-sm-3 col-form-label">Пошук:</label>
                       <div class="col-sm-9">
                         <div class="input-group">
-                          <input type="text" class="form-control" id="search-result" value="2" readonly>
+                          <input type="text" class="form-control" id="search-result" readonly>
                           <div class="input-group-append">
                             <button 
                               class="btn btn-primary copy-btn"
+                              data-toggle="tooltip" data-placement="left" data-trigger="manual"
+                              title="скопійовано в буфер обміну"
                               data-clipboard-target="#search-result">копіювати</button>
                           </div>
                         </div>
@@ -114,10 +115,12 @@
                       <label for="replace-result" class="col-sm-3 col-form-label">Заміна:</label>
                       <div class="col-sm-9">
                         <div class="input-group">
-                          <input type="text" class="form-control" id="replace-result" value="1" readonly>
+                          <input type="text" class="form-control" id="replace-result" readonly>
                           <div class="input-group-append">
                             <button 
                               class="btn btn-primary copy-btn"
+                              data-toggle="tooltip" data-placement="left" data-trigger="manual"
+                              title="скопійовано в буфер обміну"
                               data-clipboard-target="#replace-result">копіювати</button>
                           </div>
                         </div>
@@ -136,12 +139,21 @@
             <h1>Допомога</h1>
             <p>Регулярний вираз — це рядок зі спеціяльними символами, який дозволяє в текстових редакторах шукати не конкретний текст, а текст за певними ознаками. Наприклад, слова, що закінчуються на голосну.</p>
             <p>
-              <i>В Word`і регулярні вирази називаються символи узагальнення
+              <i>У Word`і регулярні вирази називаються символи узагальнення
                 (англ.&nbsp;wildcards, рус.&nbsp;подстановочные знаки)</i>
             </p>
-            <h3>Помічник коректора</h3>
-            <p>Помічник коректора має на меті спростити </p>
-            <samp>This text is meant to be treated as sample output from a computer program.</samp>
+            <p>Помічник коректора допомагає писати складні регулярні вирази для пошуку у Word`і.</p>
+
+            <h3>Пошук</h3>
+            <p>Наприклад, ви хочете знайти в документі всі прийменники «у» які стоять між голосними літерами. В полі «Що шукати» впишіть:<br /><b>_голосна_ у _голосна_</b><br />Це буде значити шукати всі місця, де зустрічається послідовність: голосна літера, пробіл, літера у, пробіл і ще одна голосна літера.</p>
+
+            <p>Помічник використовує спеціяльні шаблони, які виділяються знаком підкреслення (_). Повний перелік шаблонів є внизу. Все інше буде шукатися як точна відповідність символів.</p>
+
+            <p>Заповніть поле «Зразок тексту» прикладом тексту, який треба знайти:<br /> Побачити у очах<br/>
+            Натисніть кнопку «Виконати». Якщо пошуковий запит вірний, то «Результат пошуку» має містити зразок тексту з знайденим фрагментом:<br />Побачит<span class="match">и у о</span>чах</p>
+            
+            <p>Для пошуку такої самої послідовності у Word`і скопіюйте рядок із блока «рядки для Word`у». <i>Не забудьте в вікні пошуку увімкнути галочку Використання символів узагальнення (англ. Use wildcards, рус. Использование подстановочных знаков).</i></p>
+            <h3>Заміна</h3>
             <h3>Шаблони</h3>
             <table class="table" id="templates">
               <thead>

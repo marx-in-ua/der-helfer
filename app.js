@@ -115,6 +115,7 @@ function run() {
 
   try {
     var reg = pattern2reg(pattern);
+    $('#search-result').val(reg);
 
     var searchPreview = wrapMatches(text, reg);
     $('#search-preview').empty();
@@ -134,6 +135,14 @@ $(function() {
   tribute.attach(document.getElementById("search"));
 
   new ClipboardJS('.copy-btn');
+  $('.copy-btn').click(function(e) {
+    var $target = $(e.target);
+    $target.tooltip('show');
+    setTimeout(function(){ $target.tooltip('hide'); }, 1500);
+  });
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  });
 
   fillPatternsDict();
   fillTemplates();
