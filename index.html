@@ -29,6 +29,12 @@
       h2 {
         padding-top: 0.5315rem; /* 2.6575rem - 2.126rem; */
       }
+      .match {
+        display: inline-block;
+        background-color: #4582EC;
+        color: white;
+        padding: .1em;
+      }
     </style>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -59,6 +65,17 @@
             <div class="form-group">
               <label for="replace">Замінити на:</label>
               <textarea class="form-control" id="replace" rows="1"></textarea>
+            </div>
+            <button type="button" class="btn btn-primary btn-lg btn-block">Виконати</button>
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="card text-white bg-success mt-3">
+                  <div class="card-body">
+                    <h4 class="card-title">Рядки для Word`у</h4>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="col-sm-12 col-md-6">
@@ -99,18 +116,15 @@
                 <tr>
                   <th scope="col">Шаблон</th>
                   <th scope="col">Опис</th>
+                  <th scope="col">Зразок</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>_літера_</td>
-                  <td></td>
-                </tr>
-              </tbody>
+              <tbody></tbody>
             </table>
           </div>
           <div class="col-sm-12 col-md-6">
             <h2>Швидкі рецепти</h2>
+            Прийменник
           </div>
         </div>
       </div>
