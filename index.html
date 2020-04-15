@@ -64,15 +64,34 @@
         <div class="row">
           <div class="col-sm-12 col-md-6">
             <h1>Пошук і заміна</h1>
+            <div id="alert-placeholder"></div>
             <div class="form-group">
               <label for="search">Що шукати:</label>
-              <textarea class="form-control" id="search" rows="3"></textarea>
+              <textarea class="form-control" id="search" rows="3">_голосна_ у _голосна_</textarea>
             </div>
             <div class="form-group">
               <label for="replace">Замінити на:</label>
               <textarea class="form-control" id="replace" rows="1"></textarea>
             </div>
-            <button type="button" class="btn btn-primary btn-lg btn-block">Виконати</button>
+            <div class="form-group">
+              <label for="replace">Зразок тексту:</label>
+              <textarea class="form-control" id="sample" rows="3">Побачити у очах</textarea>
+            </div>
+            <button type="button" class="btn btn-primary btn-lg btn-block" id="run">Виконати</button>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <h2>Перевірка</h2>
+            <div class="form-group">
+              <label for="search-preview">Результат пошуку:</label>
+              <div class="form-control readonly" id="search-preview" style="min-height: 6.6rem;">
+                text
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="replace-preview">Результат заміни:</label>
+              <textarea class="form-control" id="replace-preview" rows="3" readonly>
+              </textarea>
+            </div>
             <div class="row">
               <div class="col-sm-12">
                 <div class="card text-white bg-success mt-3">
@@ -107,24 +126,6 @@
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-6">
-            <h2>Перевірка</h2>
-            <div class="form-group">
-              <label for="replace">Зразок тексту:</label>
-              <textarea class="form-control" id="replace" rows="3">Побачити у очах</textarea>
-            </div>
-            <div class="form-group">
-              <label for="search-preview">Результат пошуку:</label>
-              <div class="form-control readonly" id="search-preview" style="min-height: 6.6rem;">
-                text
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="replace-preview">Результат заміни:</label>
-              <textarea class="form-control" id="replace-preview" rows="3" readonly>
-              </textarea>
             </div>
           </div>
         </div>

@@ -31,6 +31,8 @@ var patterns = [
   },
 ];
 
+var patternsDict = {};
+
 var config = {
   trigger: '_',
   values: function (text, cb) {
@@ -67,6 +69,63 @@ function fillTemplates() {
   });
 };
 
+function fillPatternsDict() {
+  patterns.forEach(function (pattern) {
+    patternsDict[pattern.name] = pattern;
+  });
+};
+
+function escapeRegExp(string) {
+  // escape but keep ()
+  return string.replace(/[.*+\-?^${}|[\]\\]/g, '\\$&'); // $& means the whole matched string
+}
+
+function pattern2reg(pattern) {
+  var parts = pattern.split('_');
+  parts = parts.map(function (part, i) {
+    if (i % 2 == 0) {
+      return escapeRegExp(part);
+    }
+
+    if (part in patternsDict) {
+      return '[' + patternsDict[part].pattern + ']';
+    }
+
+    throw "Невідомий шаблон: " + part;
+  });
+  return parts.join('');
+};
+
+function showAllert(msg) {
+  $('#alert-placeholder').append(
+    '<div class="alert alert-warning alert-dismissible fade show">' +
+    '  <strong>Шось пішло не так!</strong> ' + msg +
+    '  <button type="button" class="close" data-dismiss="alert">' +
+    '     <span>&times;</span></button></div>');
+
+  setTimeout(function() {
+    $("#alertdiv").remove();
+  }, 5000);
+};
+
+function run() {
+  var pattern = $('#search').val();
+  var replace = $('#replace').val();
+  var text = $('#sample').val();
+
+  try {
+    var reg = pattern2reg(pattern);
+
+    var searchPreview = wrapMatches(text, reg);
+    $('#search-preview').empty();
+    $('#search-preview').append(searchPreview);
+
+  } catch(e) {
+    showAllert(e);
+  }
+  
+};
+
 $(function() {
 
   var config2 = Object.assign({}, config);
@@ -76,5 +135,8 @@ $(function() {
 
   new ClipboardJS('.copy-btn');
 
+  fillPatternsDict();
   fillTemplates();
+  $('#run').click(run);
+  run();
 });
