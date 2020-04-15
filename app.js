@@ -56,6 +56,13 @@ var config = {
 function wrapMatches(string, pattern) {
   regexp = new RegExp(pattern, 'g');
   return string.replace(regexp, function(match) {
+    if (arguments.length > 3) {
+      for (var i = 1; i < arguments.length - 2; i++) {
+        var replace = '<span class="group">' + arguments[i] + '</span>';
+        match = match.replace(arguments[i], replace);
+      }
+      console.log(arguments);
+    };
     return '<span class="match">' + match + '</span>'
   });
 };
@@ -121,6 +128,13 @@ function run() {
     $('#search-preview').empty();
     $('#search-preview').append(searchPreview);
 
+    var replaceJs = replace.replace(/\((\d)\)/g, "$$$1");
+    var regexp = new RegExp(reg, 'g');
+    var replacePreview = text.replace(regexp, replaceJs);
+    $('#replace-preview').val(replacePreview);
+
+    var replaceMs = replace.replace(/\((\d)\)/g, "\\$1");
+    $('#replace-result').val(replaceMs);
   } catch(e) {
     showAllert(e);
   }
@@ -148,4 +162,12 @@ $(function() {
   fillTemplates();
   $('#run').click(run);
   run();
+
+  $('#templates a').click(function() {
+    $('#search').val($(this).text());
+    $('#replace').val($(this).attr("title"));
+    $('#search').focus();
+
+    return false;
+  });
 });
