@@ -7,9 +7,8 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Помічник коректора</title>
 
-    <!-- Bootstrap -->
-    <!-- Latest compiled and minified CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/litera/bootstrap.min.css" rel="stylesheet" integrity="sha384-pLgJ8jZ4aoPja/9zBSujjzs7QbkTKvKw1+zfKuumQF9U+TH3xv09UUsRI52fS+A6" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tributejs/5.1.3/tribute.min.css" integrity="sha256-jCuf8eDAzmPpRqt5n0v1utTOCeWZc4OrGbv24Pw+ltk=" crossorigin="anonymous" />
 
     <style type="text/css">
       body{
@@ -28,7 +27,7 @@
         background-color: #e9ecef;
       }
       h2 {
-        padding-top: 0.5315rem; /* 2.6575rem 2.126rem; */
+        padding-top: 0.5315rem; /* 2.6575rem - 2.126rem; */
       }
     </style>
 
@@ -89,7 +88,7 @@
             <p>Регулярний вираз — це рядок зі спеціяльними символами, який дозволяє в текстових редакторах шукати не конкретний текст, а текст за певними ознаками. Наприклад, слова, що закінчуються на голосну.</p>
             <p>
               <i>В Word`і регулярні вирази називаються символи узагальнення
-                (англ. wildcards, рус. подстановочные знаки)</i>
+                (англ.&nbsp;wildcards, рус.&nbsp;подстановочные знаки)</i>
             </p>
             <h3>Помічник коректора</h3>
             <p>Помічник коректора має на меті спростити </p>
@@ -120,13 +119,24 @@
         <div class="row">
           <div class="col-sm-12">
             <p>Від <a href="https://маркс.укр/">маркс.укр</a> українському видавничому цеху.</p>
-            <p>Code released under the <a href="https://github.com/marx-in-ua/der-helfer/blob/master/LICENSE">MIT License</a>.</p>
+            <p>Помічник коректора ліцензовано на умовах <a href="https://github.com/marx-in-ua/der-helfer/blob/master/LICENSE">MIT License</a>.</p>
           </div>
         </div>
 
       </footer>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tributejs/5.1.3/tribute.js" integrity="sha256-rQcKtvLzmZh9bvTY5dEvg7NYkdiXZvu414JEUKY+/e8=" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var tribute = new Tribute({
+        values: [
+          { key: "Phil Heartman", value: "pheartman" },
+          { key: "Gordon Ramsey", value: "gramsey" }
+        ]
+      })
+
+      tribute.attach(document.getElementById("search"));
+    </script>
   </body>
 </html>
